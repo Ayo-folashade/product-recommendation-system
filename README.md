@@ -13,7 +13,8 @@ This GitHub repository contains the code for an Image-Based Recommendation Syste
 # Requirements
 
 - ```Python 3.x```
-- ```Tensorflow(>= 2.0)```
-- ```numpy```
+- ```tensorflow ==2.5.0```
+- ```numpy==1.21.0```
 - ```streamlit```
-
+- ```pillow==8.3.1```
+- ```pandas```
