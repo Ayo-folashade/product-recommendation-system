@@ -1,0 +1,27 @@
+# Ignore compiled Python files
+*.pyc
+__pycache__/
+
+# Ignore local development environment files
+venv/
+env/
+*.env
+
+# Ignore the build folder (if you have one)
+build/
+dist/
+
+# Ignore any sensitive or secret files
+secrets.yaml
+config.ini
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+
+# Ignore the embeddings and filenames pickle files
+embeddings.pkl
+filenames.pkl
