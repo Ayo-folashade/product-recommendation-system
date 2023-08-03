@@ -73,16 +73,21 @@ def main():
         # Compute similar images
         similar_indices = compute_similarity(query_embedding, embeddings)
 
-        st.subheader("Uploaded Image")
-        st.image(uploaded_image, use_column_width=True)
+        # Create two columns for side-by-side display
+        col1, col2 = st.columns(2)
 
-        st.subheader("Products Available")
-        if len(similar_indices) == 0:
-            st.write("No similar products available.")
-        else:
-            for idx in similar_indices:
-                if idx < len(filenames):
-                    st.image(filenames[idx], use_column_width=True)
+        with col1:
+            st.subheader("Uploaded Image")
+            st.image(uploaded_image, use_column_width=True)  # Display in original size
+
+        with col2:
+            st.subheader("Products Available")
+            if len(similar_indices) == 0:
+                st.write("No similar products available.")
+            else:
+                for idx in similar_indices:
+                    if idx < len(filenames):
+                        st.image(filenames[idx], use_column_width=False)  # Display in original size
 
     # Add a footer
     st.write("")
