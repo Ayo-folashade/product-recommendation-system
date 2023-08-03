@@ -23,6 +23,7 @@ The system aims to provide users with personalized recommendations based on the 
 
 ## Usage
 - Prepare your dataset: Ensure you have a dataset of images that you want to use for recommendations. The dataset should be organized in an appropriate folder structure.
+- The dataset used: https://www.kaggle.com/datasets/paramaggarwal/fashion-product-images-small
 
 - Feature Extraction: The first step is to use the pre-trained ResNet-50 model to extract embeddings from your dataset. Run ```new.py``` to extract the embeddings and save the pickle files
 
@@ -30,4 +31,4 @@ The system aims to provide users with personalized recommendations based on the 
 
 
 ## Acknowledgments
-The image recommendation system is built upon the incredible work done by the Tensorflow, Numpy, Pandas and Streamlit communities, as well as the original authors of the ResNet-50 model.
+The image recommendation system is built upon the incredible work done by the Tensorflow, Numpy, Pandas and Streamlit, Kaggle communities, as well as the original authors of the ResNet-50 model.
