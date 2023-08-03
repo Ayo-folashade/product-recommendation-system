@@ -2,6 +2,7 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 from numpy.linalg import norm
+import PIL.Image as Image
 import pickle
 
 # Load the pre-trained ResNet50 model
@@ -45,9 +46,25 @@ def compute_similarity(query_embedding, database_embeddings):
 
 # Streamlit app code
 def main():
-    st.title("Product Recommendation")
+    # Add a header and introduction
+    st.title("Product Recommendation System")
 
-    uploaded_image = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
+    # Add a centered images after the title
+    img = Image.open("page_image/img.png")
+    st.image(img, use_column_width='always')
+
+    st.write("Welcome! Lets help you discover products that match your unique taste and style.")
+
+    # Customizing the sidebar (optional)
+    st.sidebar.title("Settings")
+    # Add any settings or options here
+
+    # Add a styled upload button
+    uploaded_image = st.file_uploader(" ", type=["jpg", "jpeg", "png"], key="upload")
+    button = st.button("Upload an Image")
+    if button:
+        uploaded_image = st.file_uploader("Choose an image to find similar products", type=["jpg", "jpeg", "png"],
+                                          key="upload")
 
     if uploaded_image is not None:
         # Preprocess the user-uploaded image
@@ -57,7 +74,7 @@ def main():
         similar_indices = compute_similarity(query_embedding, embeddings)
 
         st.subheader("Uploaded Image")
-        st.image(uploaded_image)
+        st.image(uploaded_image, use_column_width=True)
 
         st.subheader("Products Available")
         if len(similar_indices) == 0:
@@ -65,7 +82,11 @@ def main():
         else:
             for idx in similar_indices:
                 if idx < len(filenames):
-                    st.image(filenames[idx])
+                    st.image(filenames[idx], use_column_width=True)
+
+    # Add a footer
+    st.write("")
+    st.write("© 2023. All rights reserved.")
 
 
 if __name__ == "__main__":
